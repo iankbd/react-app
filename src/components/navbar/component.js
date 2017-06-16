@@ -8,55 +8,40 @@ class Nav_bar extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: 0,
-      btn1_cn: "btn-group",  //cn: className
-      btn1_ae: false,        //ae: aria_expanded
-      dd1_cn: "dropdown",
-      dd1_ae: false,
+      dd1_cn: "dropdown",   //cn: className
+      dd1_ae: false,        //ae: aria_expanded
       dd2_cn: "dropdown",
       dd2_ae: false,
     };
   }
+
   componentWillMount(){
     console.log("WillMount");
-    document.addEventListener('click', () => this.handleClick("undefined_type"), false);
+    document.addEventListener('click', (e) => this.handleClick(e), false);
   }
 
   componentWillUnmount(){
-    document.removeEventListener('click', () =>this.handleClick("undefined_type"), false);
+    document.removeEventListener('click', (e) => this.handleClick(e), false);
   }
 
-  handleClick(type){
-    //console.log(e.target);
-    if (type === "undefined_type")
-    {
-      this.setState({btn1_cn: "btn-group", btn1_ae: "false"});
-      this.setState({dd1_cn: "dropdown", dd1_ae: "false"});
-      this.setState({dd2_cn: "dropdown", dd2_ae: "false"});
-    }
-    else if (type === "btn1")
-    {
-      if (this.state.btn1_cn === "btn-group")
-        this.setState({btn1_cn: "btn-group open", btn1_ae: "true"});
-      else
-        this.setState({btn1_cn: "btn-group", btn1_ae: "false"});
-    }
-    else if (type === "dd1")
-    {
-      if (this.state.dd1_cn === "dropdown")
-        this.setState({dd1_cn: "dropdown open", dd1_ae: "true"});
-      else
+  handleClick(e){
+    switch(e.target.id){
+      case "dd1":
+          this.setState({dd1_cn: "dropdown open", dd1_ae: "true"});
+          break;
+      case "dd2":
+        switch(this.state.dd2_cn){
+          case "dropdown":
+            this.setState({dd2_cn: "dropdown open", dd2_ae: "true"});
+            break;
+          default:
+            this.setState({dd2_cn: "dropdown", dd2_ae: "false"});
+        }
+        break;
+      default:
+        console.log("hi");
         this.setState({dd1_cn: "dropdown", dd1_ae: "false"});
     }
-    else if (type === "dd2")
-    {
-      if (this.state.dd2_cn === "dropdown")
-        this.setState({dd2_cn: "dropdown open", dd2_ae: "true"});
-      else
-        this.setState({dd2_cn: "dropdown", dd2_ae: "false"});
-    }
-
-
   }
 
   render() {
@@ -87,26 +72,6 @@ class Nav_bar extends React.Component {
           </div>
         </div>
 
-        <div className={this.state.btn1_cn}>
-          <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded={this.state.btn1_ae} onClick={() => this.handleClick("btn1")}>
-            Action <span className="caret"></span>
-          </button>
-          <ul className="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" className="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-
-        <ul className="nav nav-pills">
-          <li role="presentation" className="active"><a href="#">Home</a></li>
-          <li role="presentation"><a href="#">Profile</a></li>
-          <li role="presentation"><a href="#">Messages</a></li>
-        </ul>
-
         <nav className="navbar navbar-default"> {/*nav bar*/}
           <div className="container-fluid">
 
@@ -125,9 +90,8 @@ class Nav_bar extends React.Component {
                 <li className="active"><a href="#">Link <span className="sr-only">(current)</span></a></li>
                 <li><a href="#">Link</a></li>
                 <li className={this.state.dd1_cn}>
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  key="y"
-                  aria-expanded={this.state.dd1_ae} onClick={() => this.handleClick("dd1")}>Dropdown <span className="caret"></span></a>
+                  <a id="dd1" href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded={this.state.dd1_ae}>Dropdown <span className="caret"></span></a>
                   <ul className="dropdown-menu">
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>
@@ -147,9 +111,9 @@ class Nav_bar extends React.Component {
               </form>
               <ul className="nav navbar-nav navbar-right">
                 <li><a href="#">Link</a></li>
-                <li className={this.state.dd2_cn}>
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded={this.state.dd2_ae} onClick={() => this.handleClick("dd2")}>Dropdown <span className="caret"></span></a>
+                <li className={this.state.dd2_cn} >
+                  <a id="dd2" href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded={this.state.dd2_ae}>Dropdown <span className="caret"></span></a>
                   <ul className="dropdown-menu">
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>
@@ -164,11 +128,6 @@ class Nav_bar extends React.Component {
         </nav>
 
       </div>
-
-
-
-
-
 
     );
   }
