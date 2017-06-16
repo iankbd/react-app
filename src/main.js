@@ -1,4 +1,3 @@
-console.log('Hello World01');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Counter from './components/counter/component';
