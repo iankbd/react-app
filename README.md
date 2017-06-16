@@ -1,4 +1,2 @@
-My Project
----
-
-Welcome.
+# react-app
+learning react
