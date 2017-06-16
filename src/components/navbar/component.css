@@ -1,0 +1,28 @@
+.navbar {
+  color: #fafafa;
+  background-color: #222;
+}
+
+
+img {
+    width: 30px;
+    height: 30px;
+}
+a:link{
+  font-size: 25px;
+  color: #ddd;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+a {
+  //border-style: solid;
+  color:#dabcde;
+}
