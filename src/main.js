@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Counter from './components/counter/component';
-import Nav_bar from './components/navbar/component';
-//import styles from './style/navbar.css';
+import Navbar from './components/Navbar';
+import App from './components/App';
+import styles from './style/style.css';
 
 
 // document.addEventListener('DOMContentLoaded', function() {
@@ -14,6 +14,6 @@ import Nav_bar from './components/navbar/component';
 // });
 
 ReactDOM.render(
-    <Nav_bar />,
+    <App />,
     document.getElementById('mount')
 );

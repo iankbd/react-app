@@ -1,10 +1,9 @@
 import React from 'react';
-import styles from './component.css';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+
 /**
  * A counter button: tap the button to increase the count.
  */
-class Nav_bar extends React.Component {
+class Navbar extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -16,7 +15,6 @@ class Nav_bar extends React.Component {
   }
 
   componentWillMount(){
-    console.log("WillMount");
     document.addEventListener('click', (e) => this.handleClick(e), false);
   }
 
@@ -39,7 +37,6 @@ class Nav_bar extends React.Component {
         }
         break;
       default:
-        console.log("hi");
         this.setState({dd1_cn: "dropdown", dd1_ae: "false"});
     }
   }
@@ -132,4 +129,4 @@ class Nav_bar extends React.Component {
     );
   }
 }
-export default Nav_bar;
+export default Navbar;
