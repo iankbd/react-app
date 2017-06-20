@@ -10,16 +10,34 @@ class Login extends React.Component {
     this.handleEvent = this.handleEvent.bind(this);
   }
 
+  // handleEvent(e){
+  //   switch (e.target.id){
+  //     case "email":
+  //     case "password":
+  //       this.setState({
+  //         [e.target.id]: e.target.value,
+  //       });
+  //       break;
+  //     case "login":
+  //       this.props.login(this.state.email, this.state.password);
+  //       break;
+  //     case "logout":
+  //       this.props.logout();
+  //     default:
+  //       break;
+  //   }
+  // }
+
   handleEvent(e){
     switch (e.target.id){
       case "email":
       case "password":
-        this.setState({
-          [e.target.id]: e.target.value,
-        });
+        this.props.fieldchange(e.target.id, e.target.value);
         break;
       case "login":
         this.props.login(this.state.email, this.state.password);
+        document.getElementById('email').value = "";
+        document.getElementById('password').value = "";
         break;
       case "logout":
         this.props.logout();
