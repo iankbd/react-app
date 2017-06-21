@@ -20,9 +20,9 @@ import routes from './routes';
 
 import configureStore from './store';
 const store = configureStore();
-// store.subscribe(() => {
-//     console.log("store changed", store.getState().getIn(['auth']).toJS()) //showing state in console when store changed
-// })
+store.subscribe(() => {
+     console.log("store changed", store.getState().getIn(['auth']).toJS()) //showing state in console when store changed
+ })
 
 ReactDOM.render(
     <Provider store={store}>

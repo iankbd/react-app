@@ -19,7 +19,7 @@ class Navbar extends React.Component {
             </div>
             <div className="col-sm-3 col-md-2 col-centered"><Link to="docs">Docs</Link></div>
             <div className="col-sm-3 col-md-2 col-centered"><Link to="/tutorial">Tutorial</Link></div>
-            <div className="col-sm-3 col-md-2 col-centered"><a href="http://localhost:3000/">Community</a></div>
+            <div className="col-sm-3 col-md-2 col-centered"><Link to="login">Login</Link></div>
             <div className="col-sm-3 col-md-2 col-centered"><a href="http://localhost:3000/">Blog</a></div>
           </div>
         </div>
