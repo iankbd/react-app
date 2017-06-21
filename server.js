@@ -5,7 +5,10 @@ const webpackConfig = require('./webpack.config.js');
 const app = express();
 
 const compiler = webpack(webpackConfig);
-
+// app.configure(function(){
+//   app.use(express.static(__dirname + '/www'));
+//   app.use(app.routes);
+// });
 app.use(express.static(__dirname + '/www'));
 
 app.use(webpackDevMiddleware(compiler, {
@@ -17,6 +20,15 @@ app.use(webpackDevMiddleware(compiler, {
   },
   historyApiFallback: true,
 }));
+
+//app.use(app.routes);
+// app.all('/', function(req,res){
+//
+// });
+
+app.all('*', function(req, res){
+  res.redirect('/');
+});
 
 const server = app.listen(3000, function() {
   const host = server.address().address;
